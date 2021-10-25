@@ -1,4 +1,5 @@
-i = '10.30.0.197'
-webpage = r"http://{ip}/admin/#7"
-webpage = webpage.format(ip = i)
-print(webpage)
+d = [{'d': 'g', 'n': '4'}, {'o': 'h', 'e': '6'}, {'s': 'b', 'u': '1'}, {'a': 'd', 'k': '9'}]
+p = [4, 6, 7, 9, 34]
+print(d)
+print(p)
+print(d.__len__())
