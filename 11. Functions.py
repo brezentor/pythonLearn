@@ -27,52 +27,21 @@ def fuctorial(x):
 print(fuctorial(5))
 
 
-#functions with dictionaries
+#functions with dictionaries through MODULE 12 Lesson
 #1
-
-def dictionary(string, integrior):
-    zapis = {
-        'letter': string,
-        'number': integrior
-    }
-    return zapis
+import module12dicti
 
 s = input("Name?")
 n = input("Age?")
-zapis1 = dictionary(s, n)
+zapis1 = module12dicti.dictionary(s, n)
 print(zapis1)
 
 #2
 
-d = []
-na = ""
-ti = ""
-ord = ""
-
-def dicti(name, time, *order):
-    ordertab = {
-        'name': name,
-        'time': time,
-        'order': order
-    }
-    d.append(ordertab)
-    print(d)
+import module12dicti2
 
 na = input("name? ")
 ti = input("time? ")
 ord = input("order? ")
-dicti(na, ti, ord)
-q = ""
-while (q != "n"):
-    q = input("Any orders? Y or N? ")
-    q = q.lower()
-    if (q == "y"):
-        na = input("name? ")
-        ti = input("time? ")
-        ord = input("order? ")
-        dicti(na, ti, ord)
-    elif (q == "n"):
-        print("OK\n" + "Here an ordertab:")
-        t = d.__len__()
-        for p in range (0, t, 1):
-            print(d[p])
+module12dicti2.dicti(na, ti, ord)
+module12dicti2.funcinfunc()
