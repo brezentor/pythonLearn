@@ -38,10 +38,10 @@ print(zapis1)
 
 #2
 
-import module12dicti2
+from module12dicti2 import *
 
 na = input("name? ")
 ti = input("time? ")
 ord = input("order? ")
-module12dicti2.dicti(na, ti, ord)
-module12dicti2.funcinfunc()
+dicti(na, ti, ord)
+funcinfunc()
