@@ -1,11 +1,6 @@
 from urllib import request
 import sys
 
-#tip = "D:\\python\\trueresults.log"
-#iptest = open(tip, mode="r")
-#for p in iptest:
-  #ipaddrs = str(p)
-
 writeerr = open(file = "D:\\python\\pythonLearn\\15.Try_Except.txt", mode = "a")
 ipaddrs = "10.30.0.66"
 myurl = "http://{ip}/admin/spacfg.xml"
@@ -14,7 +9,7 @@ try:
     answer = request.urlopen(mu)
 except:
     print(sys.exc_info()[1])
-    writeerr.write(ipaddrs + "\n")
+    writeerr.write(ipaddrs+"\n")
     writeerr.close()
 else:
     ans = answer.readlines()
