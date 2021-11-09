@@ -18,8 +18,14 @@ purjson.close()
 
 writeerr = open(arper, mode = "a")
 iptest = open(tip, mode="r")
+sizetest = open(tip, mode="r")
 arpresults = open(arpres, mode = "a")
 allfile = open(jsonfile, mode = "a")
+
+count = 0
+info = sizetest.readlines()
+size = len(info)
+sizetest.close()
 
 alfi = []
 
@@ -48,10 +54,15 @@ for p in iptest:
         results3 = re.findall(findmod, str(ans))
         findresult = r"[0-9, A-Z, -]{7}"
         model = re.findall(findresult, str(results3))
-        arpresults.write(macad[0] + " - " + ipaddrs + " - " + model[0] + " - " + number[0] + "\n")
+
+        loginfo = "{macf} - {ipf} - {modf} - {numf}\n"
+        arpresults.write(loginfo.format(macf = macad[0], ipf = ipaddrs, modf = model[0], numf = number[0]))
 
         info = {"MacAddress" : macad[0], "IpAddress" : ipaddrs, "PhoneModel": model[0], "Number": number[0]}
         alfi.append(info)
+        print(str(count) + " of " + str(size))
+        count += 1
+
 
 
 try:
