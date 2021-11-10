@@ -22,7 +22,7 @@ sizetest = open(tip, mode="r")
 arpresults = open(arpres, mode = "a")
 allfile = open(jsonfile, mode = "a")
 
-count = 0
+count = 1
 info = sizetest.readlines()
 size = len(info)
 sizetest.close()
@@ -30,6 +30,15 @@ sizetest.close()
 alfi = []
 
 for p in iptest:
+    countres = "{co} of {si}"
+    countresult = countres.format(co = str(count), si = str(size))
+    endres = "{en} of {en}"
+    endresult = endres.format(en = str(size))
+    if countresult == endresult:
+        print("End")
+    else:
+        print(countresult)
+    count += 1
     ipaddrs = str(p).rstrip(' \n')
     myurl = "http://{ip}/admin/spacfg.xml"
     mu = myurl.format(ip=ipaddrs)
@@ -60,9 +69,6 @@ for p in iptest:
 
         info = {"MacAddress" : macad[0], "IpAddress" : ipaddrs, "PhoneModel": model[0], "Number": number[0]}
         alfi.append(info)
-        print(str(count) + " of " + str(size))
-        count += 1
-
 
 
 try:
