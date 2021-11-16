@@ -20,7 +20,7 @@ for n in data:
     ip = data[counter]['IpAddress']
     model = data[counter]['PhoneModel']
     num = data[counter]['Number']
-    loc = "HO"
+    loc = data[counter]['Location']
     invnum = "unknown{c}".format(c = counter) # until dont made a script to get a invnumber
     messageproc = "{l} of {k}".format(l = countermes, k = inf)
     print(messageproc)

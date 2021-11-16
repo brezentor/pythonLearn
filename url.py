@@ -2,8 +2,14 @@ from urllib import request
 import sys
 import json
 import re
+import paramiko
 
 """"""
+host = "10.30.0.6"
+port = 22
+username = "iptel"
+password = "48qtnRXt"
+
 arpres = "D:\\python\\arp.log"
 tip = "D:\\python\\trueresults.log"
 arper = "D:\\python\\arp_error.log"
@@ -64,10 +70,21 @@ for p in iptest:
         findresult = r"[0-9, A-Z, -]{7}"
         model = re.findall(findresult, str(results3))
 
-        loginfo = "{macf} - {ipf} - {modf} - {numf}\n"
-        arpresults.write(loginfo.format(macf = macad[0], ipf = ipaddrs, modf = model[0], numf = number[0]))
+        command_koza = """mysql -u asterisk -pyw7s72ad1d2esd3qd3 asterisk -e 'select name from users where extension="{mun}"'"""
+        command = command_koza.format(mun=number[0])
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(host, port, username, password)
+        stdin, stdout, stderr = ssh.exec_command(command)
+        dataraw = stdout.read() + stderr.read()
+        loc = str(dataraw).lstrip("b'name\\n").rstrip("n'").rstrip("\\")
+        print(loc)
+        ssh.close()
 
-        info = {"MacAddress" : macad[0], "IpAddress" : ipaddrs, "PhoneModel": model[0], "Number": number[0]}
+        loginfo = "{macf} - {ipf} - {modf} - {numf} - {locat}\n"
+        arpresults.write(loginfo.format(macf = macad[0], ipf = ipaddrs, modf = model[0], numf = number[0], locat = loc))
+
+        info = {"MacAddress" : macad[0], "IpAddress" : ipaddrs, "PhoneModel": model[0], "Number": number[0], "Location": loc}
         alfi.append(info)
 
 
