@@ -4,7 +4,6 @@ import json
 import re
 import paramiko
 
-""""""
 host = "10.30.0.6"
 port = 22
 username = "iptel"
