@@ -1,5 +1,5 @@
-def tower_builder(n):
-    return [("*" * (i*2-1)).center(n*2-1) for i in range(1, n+1)]
+def domain_name(url):
+    return url.split("://")[-1].split(".")[-2]
 
-n = 4
-print(tower_builder(n))
+url = "http://google.com"
+print(domain_name(url))
