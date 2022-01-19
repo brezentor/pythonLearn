@@ -2,7 +2,7 @@ def top_3_words(text):
     res = ()
     for symbol in text:
         if ((symbol.isascii() == True) or (symbol.isspace() == True)):
-            
+
         else:
             pass
 
